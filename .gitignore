@@ -1,0 +1,37 @@
+# Dependencies and builds
+node_modules/
+dist/
+.output/
+.nitro/
+.tanstack/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Runtime data and sessions
+tokens/
+wppconnect_tokens/
+wppconnect-user-data/
+bling_tokens.json
+bling_events.json
+bling_events.json.tmp
+pending_actions.json
+database.json
+database.json.tmp
+offer_funnel.json
+offer_funnel.json.tmp
+group_sales.json
+group_sales.json.tmp
+whatsapp_codex_threads.json
+whatsapp_codex_threads.json.tmp
+
+# Logs and temporary files
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+

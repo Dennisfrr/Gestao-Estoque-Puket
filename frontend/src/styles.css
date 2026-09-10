@@ -1,0 +1,215 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Puket Cadastro Inteligente — design system.
+ * Paleta: rosa vibrante (primária), amarelo (destaque), turquesa (informação),
+ * roxo (complementar), fundos brancos e rosa muito claro.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-soft: var(--primary-soft);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-soft: var(--accent-soft);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-info-soft: var(--info-soft);
+  --color-grape: var(--grape);
+  --color-grape-foreground: var(--grape-foreground);
+  --color-grape-soft: var(--grape-soft);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-warning-soft: var(--warning-soft);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive-soft: var(--destructive-soft);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --font-sans: "Nunito", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Baloo 2", "Nunito", ui-sans-serif, system-ui, sans-serif;
+  --shadow-soft: 0 8px 24px -12px oklch(0.55 0.22 5 / 0.28);
+  --shadow-float: 0 18px 44px -20px oklch(0.55 0.22 5 / 0.35);
+  --animate-bubble: bubble 7s ease-in-out infinite;
+  --animate-pop-in: pop-in 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+:root {
+  --radius: 1rem;
+  --background: oklch(0.985 0.008 350);
+  --foreground: oklch(0.26 0.055 340);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.26 0.055 340);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.26 0.055 340);
+
+  --primary: oklch(0.63 0.23 2);
+  --primary-foreground: oklch(0.99 0.005 350);
+  --primary-soft: oklch(0.96 0.03 350);
+
+  --secondary: oklch(0.965 0.02 350);
+  --secondary-foreground: oklch(0.35 0.11 350);
+
+  --muted: oklch(0.965 0.012 340);
+  --muted-foreground: oklch(0.52 0.045 340);
+
+  --accent: oklch(0.87 0.17 92);
+  --accent-foreground: oklch(0.32 0.08 70);
+  --accent-soft: oklch(0.97 0.05 95);
+
+  --info: oklch(0.72 0.13 195);
+  --info-foreground: oklch(0.27 0.06 210);
+  --info-soft: oklch(0.96 0.035 195);
+
+  --grape: oklch(0.58 0.19 305);
+  --grape-foreground: oklch(0.99 0.005 300);
+  --grape-soft: oklch(0.96 0.03 305);
+
+  --success: oklch(0.66 0.15 160);
+  --success-foreground: oklch(0.26 0.06 165);
+  --success-soft: oklch(0.96 0.04 165);
+
+  --warning: oklch(0.76 0.16 65);
+  --warning-foreground: oklch(0.32 0.09 60);
+  --warning-soft: oklch(0.97 0.045 75);
+
+  --destructive: oklch(0.6 0.22 22);
+  --destructive-foreground: oklch(0.99 0.005 20);
+  --destructive-soft: oklch(0.96 0.035 25);
+
+  --border: oklch(0.925 0.018 340);
+  --input: oklch(0.91 0.022 340);
+  --ring: oklch(0.63 0.23 2);
+
+  --chart-1: oklch(0.63 0.23 2);
+  --chart-2: oklch(0.87 0.17 92);
+  --chart-3: oklch(0.72 0.13 195);
+  --chart-4: oklch(0.58 0.19 305);
+  --chart-5: oklch(0.66 0.15 160);
+
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: oklch(0.26 0.055 340);
+  --sidebar-primary: oklch(0.63 0.23 2);
+  --sidebar-primary-foreground: oklch(0.99 0.005 350);
+  --sidebar-accent: oklch(0.96 0.03 350);
+  --sidebar-accent-foreground: oklch(0.35 0.11 350);
+  --sidebar-border: oklch(0.93 0.018 340);
+  --sidebar-ring: oklch(0.63 0.23 2);
+}
+
+@keyframes bubble {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -18px, 0) scale(1.06);
+  }
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility surface-card {
+  background-color: var(--color-card);
+  border-radius: var(--radius-3xl);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-soft);
+}
+
+@utility focus-ring {
+  outline: none;
+  &:focus-visible {
+    outline: 3px solid var(--color-ring);
+    outline-offset: 2px;
+  }
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-ring);
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* O Lovable injeta este selo no HTML publicado. */
+#lovable-badge {
+  display: none !important;
+}

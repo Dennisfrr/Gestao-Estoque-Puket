@@ -1,0 +1,9 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { Info } from "lucide-react";
+import { AppLayout } from "@/layouts/AppLayout";
+import { IntegrationStatusCard } from "@/components/puket/IntegrationStatusCard";
+import { useEffect, useState } from "react";
+import { getIntegrationStatus } from "@/lib/api";
+import type { IntegrationStatus } from "@/types";
+export const Route = createFileRoute("/status")({ head: () => ({ meta: [{ title: "Status | Puket Cadastro Inteligente" }, { name: "description", content: "Visual demonstrativo do estado das integrações." }] }), component: Status });
+function Status() { const [integrations, setIntegrations] = useState<IntegrationStatus[]>([]); const [message, setMessage] = useState("Consultando os serviços…"); useEffect(() => { getIntegrationStatus().then(({ data }) => { setIntegrations(data.map((item) => ({ ...item, icon: item.id === "linx" ? "Database" : item.id === "bling" ? "PackageSearch" : "Server", lastCheck: "agora" }))); setMessage("Status consultado diretamente no backend."); }, (error) => setMessage(error instanceof Error ? error.message : "Backend indisponível.")); }, []); return <AppLayout><div className="mb-7"><p className="text-sm font-extrabold uppercase tracking-[.18em] text-primary">Visão geral</p><h1 className="mt-2 font-display text-3xl font-extrabold sm:text-4xl">Status das integrações</h1><p className="mt-2 text-muted-foreground">Uma leitura rápida dos serviços que participam das automações.</p></div><div className="mb-5 flex items-start gap-3 rounded-2xl border border-info/30 bg-info-soft p-4 text-sm"><Info className="mt-0.5 h-5 w-5 shrink-0 text-info-foreground" /><p>{message}</p></div><div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">{integrations.map((item) => <IntegrationStatusCard key={item.id} integration={item} />)}</div></AppLayout>; }
