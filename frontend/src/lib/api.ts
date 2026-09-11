@@ -75,3 +75,17 @@ export async function searchCatalog(params: Record<string, string | number>) {
   const query = new URLSearchParams(Object.entries(params).filter(([, value]) => value !== "" && value !== undefined).map(([key, value]) => [key, String(value)])).toString();
   return request<{ success: boolean; total: number; pagina: number; limite: number; temMais: boolean; produtos: CatalogProduct[] }>(`/api/catalogo/buscar?${query}`);
 }
+
+export type BlingCatalogCheck = {
+  existe: boolean;
+  id?: number;
+  data?: { id?: number; codigo?: string; nome?: string; variacoes?: unknown[] };
+  error?: string;
+};
+
+export async function checkCatalogProductsInBling(codigos: string[]) {
+  return request<Record<string, BlingCatalogCheck>>("/api/bling/verificar-lote", {
+    method: "POST",
+    body: JSON.stringify({ codigos }),
+  });
+}
